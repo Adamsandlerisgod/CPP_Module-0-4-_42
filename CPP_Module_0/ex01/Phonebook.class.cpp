@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.Class.cpp                                :+:      :+:    :+:   */
+/*   Phonebook.cpp.                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,3 +12,10 @@
 
 # include "Phonebook.hpp"
 
+Phonebook::Phonebook()
+{
+}
+
+Phonebook::~Phonebook()
+{
+}
