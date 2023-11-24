@@ -31,7 +31,7 @@ public:
 	~Phonebook();
 };
 
-Phonebook::Phonebook(/* args */)
+Phonebook::Phonebook()
 {
 }
 
