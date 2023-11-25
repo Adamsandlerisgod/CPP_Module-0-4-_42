@@ -24,20 +24,14 @@ using namespace std;
 class Phonebook
 {
 private:
-	class	Contact	contacts[8]
-	string			contact_info[5];
+	class	Contact	contacts[8];
+	string			info_prompt[5];
 public:
+	int	Count_contact;
+	void 	Add_Contact();
+	void	Save_Contact(string contact_info[5]);
 	Phonebook();
 	~Phonebook();
 };
-
-Phonebook::Phonebook()
-{
-}
-
-Phonebook::~Phonebook()
-{
-}
-
 
 #endif
