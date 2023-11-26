@@ -24,12 +24,16 @@ using namespace std;
 class Phonebook
 {
 private:
-	class	Contact	contacts[8];
+	Contact			contacts[8];
 	string			info_prompt[5];
 public:
-	int	Count_contact;
+	int		Count_contact;
+	void	Display_Contact(int index);
+	void	Display_Phonebook();
+	void	Search_Contact();
 	void 	Add_Contact();
 	void	Save_Contact(string contact_info[5]);
+	string  trim_Width(string input);
 	Phonebook();
 	~Phonebook();
 };
