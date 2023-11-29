@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 17:16:57 by whendrik          #+#    #+#             */
-/*   Updated: 2023/11/22 17:30:13 by whendrik         ###   ########.fr       */
+/*   Updated: 2023/11/29 20:51:18 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 #include "Phonebook.hpp"
 
-using namespace std;
 
-string	ft_capitalizer(string str)
+std::string	capitalizer(std::string str)
 {
 	int len = str.length();
 	int i = 0;
@@ -34,25 +33,25 @@ string	ft_capitalizer(string str)
 int main()
 {
 	Phonebook	phonebook;
-	string		command;
+	std::string		command;
 
-	cout << "Enter a command: ADD/SEARCH/EXIT" << endl;
-	while (getline(cin, command))
+	std::cout << "Enter a command: ADD/SEARCH/EXIT" << std::endl;
+	while (std::getline(std::cin, command))
 	{
-		if (ft_capitalizer(command) == "ADD")
+		if (capitalizer(command) == "ADD")
 		{
-			phonebook.Add_Contact();
+			phonebook.addContact();
 		}
-		else if (ft_capitalizer(command) == "SEARCH")
+		else if (capitalizer(command) == "SEARCH")
 		{
-			phonebook.Search_Contact();
+			phonebook.searchContact();
 		}
-		else if (ft_capitalizer(command) == "EXIT")
+		else if (capitalizer(command) == "EXIT")
 			return(0);
 		else
-			cout << "Enter a valid command" << endl;
-		cin.clear();
-		cout << "Enter a command: ADD/SEARCH/EXIT" << endl;
+			std::cout << "Enter a valid command" << std::endl;
+		std::cin.clear();
+		std::cout << "Enter a command: ADD/SEARCH/EXIT" << std::endl;
 	}
 	return (0);
 }

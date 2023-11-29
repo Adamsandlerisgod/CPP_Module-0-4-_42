@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 20:17:50 by whendrik          #+#    #+#             */
-/*   Updated: 2023/11/23 20:37:14 by whendrik         ###   ########.fr       */
+/*   Updated: 2023/11/29 20:23:56 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,36 +22,36 @@ Contact::~Contact(void)
 	/*destructor proto*/
 }
 
-void	Contact::SetData(string contact_info[5])
+void	Contact::setData(std::string contactInfo[5])
 {
-	this->first_name = contact_info[0];
-	this->last_name = contact_info[1];
-	this->nick_name = contact_info[2];
-	this->phone_num = contact_info[3];
-	this->darkest_secret = contact_info[4];
+	this->_firstName = contactInfo[0];
+	this->_lastName = contactInfo[1];
+	this->_nickName = contactInfo[2];
+	this->_phoneNum = contactInfo[3];
+	this->_darkestSecret = contactInfo[4];
 }
 
-string	Contact::get_first_name(void)
+std::string	Contact::getFirstName(void)
 {
-	return(this->first_name);
+	return(this->_firstName);
 }
 
-string	Contact::get_last_name(void)
+std::string	Contact::getLastName(void)
 {
-	return(this->last_name);
+	return(this->_lastName);
 }
 
-string	Contact::get_nick_name(void)
+std::string	Contact::getNickName(void)
 {
-	return(this->nick_name);
+	return(this->_nickName);
 }
 
-string	Contact::get_phone_num(void)
+std::string	Contact::getPhoneNum(void)
 {
-	return(this->phone_num);
+	return(this->_phoneNum);
 }
 
-string	Contact::get_darkest_secret(void)
+std::string	Contact::getDarkestSecret(void)
 {
-	return(this->darkest_secret);
+	return(this->_darkestSecret);
 }

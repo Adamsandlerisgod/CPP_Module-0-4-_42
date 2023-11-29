@@ -12,99 +12,97 @@
 
 # include "Phonebook.hpp"
 
-using namespace std;
-
 Phonebook::Phonebook()
 {
-    cout << "Initiating Phonebook program..." << endl;
-    this->info_prompt[0] = "First Name : ";
-    this->info_prompt[1] = "Last Name : ";
-    this->info_prompt[2] = "Nickname : ";
-    this->info_prompt[3] = "Phone number : ";
-    this->info_prompt[4] = "Darkest Secret : ";
-    this->Count_contact = 0;
+    std::cout << "Initiating Phonebook program..." << std::endl;
+    this->_infoPrompt[0] = "First Name : ";
+    this->_infoPrompt[1] = "Last Name : ";
+    this->_infoPrompt[2] = "Nickname : ";
+    this->_infoPrompt[3] = "Phone number : ";
+    this->_infoPrompt[4] = "Darkest Secret : ";
+    this->countContact = 0;
 }
 
 Phonebook::~Phonebook()
 {
-    cout << "Exiting the phonebook..." << endl;
+    std::cout << "Exiting the phonebook..." << std::endl;
 }   
 
-void    Phonebook::Add_Contact()
+void    Phonebook::addContact()
 {
     Contact contact;
-    string  buffer[5];
+    std::string  buffer[5];
 
     for(int i = 0; i < 5; i++)
     {
-        cout << this->info_prompt[i];
-        getline(cin, buffer[i]);
+        std::cout << this->_infoPrompt[i];
+        std::getline(std::cin, buffer[i]);
         if (buffer[i].empty())
         {
-            cout << "It can't be empty, try again" << endl;
+            std::cout << "It can't be empty, try again" << std::endl;
             i--;
         }
     }
-    this->Save_Contact(buffer);
-    cout << "You have succesfully added a contact" << endl;
+    this->saveContact(buffer);
+    std::cout << "You have succesfully added a contact" << std::endl;
 }
 
-void    Phonebook::Search_Contact()
+void    Phonebook::searchContact()
 {
     int index = 0;
-    string  input;
+    std::string  input;
 
-    if (this->Count_contact == 0)
+    if (this->countContact == 0)
     {
-        cout << "Add a contact first, before you Search it" << endl;    
+        std::cout << "Add a contact first, before you Search it" << std::endl;    
         return ;
     }
-    Display_Phonebook();
-    cout << "Enter Index :" << endl;
-    getline(cin, input);
+    displayPhonebook();
+    std::cout << "Enter Index :" << std::endl;
+    std::getline(std::cin, input);
     while (input.empty())
     {
-        cout << "Cannot be empty should be a number between 0 - 7" << endl;
-        getline(cin, input);
+        std::cout << "Cannot be empty should be a number between 0 - 7" << std::endl;
+        std::getline(std::cin, input);
     }
-   istringstream	iss(input);
+   std::istringstream	iss(input);
 	if (iss >> index && iss.eof())
 	{
-		if (index >= 0 && index < this->Count_contact)
-            return (this->Display_Contact(index), void ());
+		if (index >= 0 && index < this->countContact)
+            return (this->displayContact(index), void ());
 		else
-			cout << "Index are not on the list" << endl;
+			std::cout << "Index are not on the list" << std::endl;
 	}
 	else
-		cout << "Invalid input. Please enter number." << endl; 
+		std::cout << "Invalid input. Please enter number." << std::endl; 
 }
 
-void    Phonebook::Display_Contact(int index)
+void    Phonebook::displayContact(int index)
 {
 
-	cout << this->info_prompt[0] << this->contacts[index].get_first_name() << endl;
-	cout << this->info_prompt[1] << this->contacts[index].get_last_name() << endl;
-	cout << this->info_prompt[2] << this->contacts[index].get_nick_name() << endl;
-	cout << this->info_prompt[3] << this->contacts[index].get_phone_num() << endl;
-	cout << this->info_prompt[4] << this->contacts[index].get_darkest_secret() << endl;
+	std::cout << this->_infoPrompt[0] << this->_contacts[index].getFirstName() << std::endl;
+	std::cout << this->_infoPrompt[1] << this->_contacts[index].getLastName() << std::endl;
+	std::cout << this->_infoPrompt[2] << this->_contacts[index].getNickName() << std::endl;
+	std::cout << this->_infoPrompt[3] << this->_contacts[index].getPhoneNum() << std::endl;
+	std::cout << this->_infoPrompt[4] << this->_contacts[index].getDarkestSecret() << std::endl;
 
 }
 
-void    Phonebook::Display_Phonebook()
+void    Phonebook::displayPhonebook()
 {
-    cout << "|   Index  | Firstname| Lastname | Nickname |" << endl;
-    cout << "---------------------------------------------" << endl;
-    for (int i = 0; i < this->Count_contact; i++)
+    std::cout << "|   Index  | Firstname| Lastname | Nickname |" << std::endl;
+    std::cout << "---------------------------------------------" << std::endl;
+    for (int i = 0; i < this->countContact; i++)
     {
-    	cout << "|" << setw(10) << right << i ;
-        cout << "|" << setw(10) << right << this->trim_Width(this->contacts[i].get_first_name());
-        cout << "|" << setw(10) << right << this->trim_Width(this->contacts[i].get_last_name());
-        cout << "|" << setw(10) << right << this->trim_Width(this->contacts[i].get_nick_name()) << "|" << endl;
-        cout << "---------------------------------------------" << endl;
+    	std::cout << "|" << std::setw(10) << std::right << i ;
+        std::cout << "|" << std::setw(10) << std::right << this->_trimWidth(this->_contacts[i].getFirstName());
+        std::cout << "|" << std::setw(10) << std::right << this->_trimWidth(this->_contacts[i].getLastName());
+        std::cout << "|" << std::setw(10) << std::right << this->_trimWidth(this->_contacts[i].getNickName()) << "|" << std::endl;
+        std::cout << "---------------------------------------------" << std::endl;
     }
 }
 
-string  Phonebook::trim_Width(string input)
+std::string  Phonebook::_trimWidth(std::string input)
 {
     if (input.length() > 10)
     {
@@ -114,15 +112,15 @@ string  Phonebook::trim_Width(string input)
     return (input);
 }
 
-void    Phonebook::Save_Contact(string contact_info[5])
+void    Phonebook::saveContact(std::string contactInfo[5])
 {
     static int  index = 0;
 
     if (index == 8)
         index = 0;
-    this->contacts[index].SetData(contact_info);
-    if (this->Count_contact < 8)
-        Count_contact += 1;
+    this->_contacts[index].setData(contactInfo);
+    if (this->countContact < 8)
+        countContact += 1;
     index += 1;
 }
 

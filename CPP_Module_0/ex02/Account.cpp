@@ -6,14 +6,13 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 14:16:09 by whendrik          #+#    #+#             */
-/*   Updated: 2023/11/29 17:46:04 by whendrik         ###   ########.fr       */
+/*   Updated: 2023/11/29 20:54:24 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Account.hpp"
 
-using namespace std;
 
 int	Account:: _nbAccounts = 0,
 	Account:: _totalAmount = 0,
@@ -22,14 +21,14 @@ int	Account:: _nbAccounts = 0,
 
 void	Account:: _displayTimestamp()
 {
-	struct tm	*time_data;
-	time_t		rawtime;
+	struct tm	*timeData;
+	time_t		rawTime;
 	char		str[40];
 	
-	time(&rawtime);
-	time_data = localtime(&rawtime);
-	strftime(str, 80,"[%Y%m%d_%H%M%S]", time_data);
-	cout << str << " "; 	
+	time(&rawTime);
+	timeData = localtime(&rawTime);
+	strftime(str, 80,"[%Y%m%d_%H%M%S]", timeData);
+	std::cout << str << " "; 	
 }
 
 Account::Account(int initial_deposit)
@@ -41,69 +40,69 @@ Account::Account(int initial_deposit)
 	_nbAccounts++;
 	_totalAmount += _amount;
 	_displayTimestamp();
-	cout << "index:" << BRED << _accountIndex << RESET << ";";
-	cout << "amount:" << BRED << _amount << RESET << ";";
-	cout << "created" << endl;
+	std::cout << "index:" << BRED << _accountIndex << RESET << ";";
+	std::cout << "amount:" << BRED << _amount << RESET << ";";
+	std::cout << "created" << std::endl;
 }
 
 Account::~Account()
 {
 	_displayTimestamp();
-	cout << "index:" << BRED << _accountIndex << RESET << ";";
-	cout << "amount:" << BRED << _amount << RESET << ";";
-	cout << "closed" << endl;
+	std::cout << "index:" << BRED << _accountIndex << RESET << ";";
+	std::cout << "amount:" << BRED << _amount << RESET << ";";
+	std::cout << "closed" << std::endl;
 }
 
 void	Account::displayAccountsInfos()
 {
 	_displayTimestamp();
-	cout << "accounts:" << BRED << _nbAccounts << RESET << ";";
-	cout << "total:" << BRED << _totalAmount << RESET << ";";
-	cout << "deposits:" << BRED << _totalNbDeposits << RESET << ";";
-	cout << "withdrawals:" << BRED << _totalNbWithdrawals << RESET << endl;
+	std::cout << "accounts:" << BRED << _nbAccounts << RESET << ";";
+	std::cout << "total:" << BRED << _totalAmount << RESET << ";";
+	std::cout << "deposits:" << BRED << _totalNbDeposits << RESET << ";";
+	std::cout << "withdrawals:" << BRED << _totalNbWithdrawals << RESET << std::endl;
 }
 
 void	Account::displayStatus() const
 {
 	_displayTimestamp();
-	cout << "index:" << BRED << _accountIndex << RESET << ";";
-	cout << "amount:" << BRED << _amount << RESET << ";";
-	cout << "deposits:" << BRED << _nbDeposits << RESET << ";";
-	cout << "withdrawals:" << BRED << _nbWithdrawals << RESET << endl;
+	std::cout << "index:" << BRED << _accountIndex << RESET << ";";
+	std::cout << "amount:" << BRED << _amount << RESET << ";";
+	std::cout << "deposits:" << BRED << _nbDeposits << RESET << ";";
+	std::cout << "withdrawals:" << BRED << _nbWithdrawals << RESET << std::endl;
 	
 }
 
 void	Account::makeDeposit(int deposit)
 {
 	_displayTimestamp();
-	cout << "index:" << BRED << _accountIndex << RESET << ";";
-	cout << "p_amount:" << BRED << _amount << RESET << ";";
-	cout << "deposit:" << BRED << deposit << RESET << ";";
+	std::cout << "index:" << BRED << _accountIndex << RESET << ";";
+	std::cout << "p_amount:" << BRED << _amount << RESET << ";";
+	std::cout << "deposit:" << BRED << deposit << RESET << ";";
 	_amount += deposit;
 	_totalAmount += deposit;
 	_nbDeposits++;
 	_totalNbDeposits++;
-	cout << "amount:" << BRED << _amount << RESET << ";";
-	cout << "nb_deposits:" << BRED << _nbDeposits << RESET << endl;
+	std::cout << "amount:" << BRED << _amount << RESET << ";";
+	std::cout << "nb_deposits:" << BRED << _nbDeposits << RESET << std::endl;
 }
 
 bool	Account::makeWithdrawal(int withdrawal)
 {
 	_displayTimestamp();
-	cout << "index:" << BRED << _accountIndex << RESET << ";";
-	cout << "p_amount:" << BRED << _amount << RESET << ";";
+	std::cout << "index:" << BRED << _accountIndex << RESET << ";";
+	std::cout << "p_amount:" << BRED << _amount << RESET << ";";
 	if (withdrawal > _amount)
 	{
-		cout << "withdrawal:refused" << endl;
+		std::cout << "withdrawal:refused" << std::endl;
 		return (false);
 	}
-	cout << "withdrawal:" << BRED << withdrawal << RESET << ";";
+	std::cout << "withdrawal:" << BRED << withdrawal << RESET << ";";
 	_amount -= withdrawal;
 	_totalAmount -= withdrawal;
 	_nbWithdrawals++;
 	_totalNbWithdrawals++;
-	cout << "amount:" << BRED << _amount << RESET << ";";
-	cout << "nb_withdrawals:" << BRED << _nbWithdrawals << RESET << endl;
+	std::cout << "amount:" << BRED << _amount << RESET << ";";
+	std::cout << "nb_withdrawals:" << BRED << _nbWithdrawals << RESET << std::endl;
 	return (true);
 }
 
