@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 19:09:34 by whendrik          #+#    #+#             */
-/*   Updated: 2023/12/01 19:26:46 by whendrik         ###   ########.fr       */
+/*   Updated: 2023/12/21 17:24:35 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 HumanB::HumanB(std::string _name) : _name(_name), _weapon(NULL)
 {
-	std::cout << "Human B : " << _name << " is born." << std::endl;
+	std::cout << "HumanB : " << _name << " is born." << std::endl;
 }
 
 HumanB::~HumanB()
 {
-	std::cout << "Human B : " << _name << " is obliterated." << std::endl;
+	std::cout << "HumanB : " << _name << " is obliterated." << std::endl;
 }
 
 void	HumanB::setWeapon(Weapon *_weapon)
