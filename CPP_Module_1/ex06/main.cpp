@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:09:38 by whendrik          #+#    #+#             */
-/*   Updated: 2023/12/02 18:43:08 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/02/13 21:07:04 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,9 @@
 int	main(int ac, char **argv)
 {
 	if (ac != 2)
-		return (0);
+		return(cout << "input valid string please : Hint: DEBUG/INFO/WARNING/ERROR" << endl, 0);
 	Harl	harl;
 	string	level = argv[1];
 	harl.complain(level);
-	// harl.complain("INFO");
-	// harl.complain("WARNING");
-	// harl.complain("ERROR");
-	/*For testing wrong inputs*/
-	// harl.complain("ERRORist");
 	return (0);
 }

@@ -6,12 +6,12 @@
 #    By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 16:34:27 by marvin            #+#    #+#              #
-#    Updated: 2023/12/02 18:12:13 by whendrik         ###   ########.fr        #
+#    Updated: 2024/02/13 21:04:03 by whendrik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ### Executablem###
-NAME	= Harlinator
+NAME	= harlFilter
 
 ### Compilation ###
 CC		= c++
