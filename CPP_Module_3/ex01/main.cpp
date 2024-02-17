@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 12:04:38 by whendrik          #+#    #+#             */
-/*   Updated: 2023/12/28 14:40:08 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:33:44 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int main()
 {
-	ScavTrap	clap1("John Wick");
+	ScavTrap	scav1("John Wick");
+	ScavTrap	s(scav1);
+	ClapTrap	clap1("Africa");
+	ClapTrap	clap2(clap1);
 
-	clap1.guardGate();
-	clap1.attack("Itself");
-	clap1.takeDamage(20);
-	// clap1.takeDamage(10);
-	clap1.beRepaired(5);
-	
+	scav1.guardGate();
+	s.guardGate();
+	scav1.attack("Canada");
+	scav1.takeDamage(100);
+	scav1.beRepaired(5);
 }

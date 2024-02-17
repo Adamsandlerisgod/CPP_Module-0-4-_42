@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:13:05 by whendrik          #+#    #+#             */
-/*   Updated: 2023/12/28 16:17:16 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:31:14 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,12 @@ class FragTrap : public ClapTrap
 	private:
 	
 	public:
-		FragTrap(string name);
+		FragTrap();
+		FragTrap(std::string name);
+		FragTrap(const FragTrap& other);
+		FragTrap& operator=(const FragTrap& other);
 		~FragTrap();
 		void	highFiveGuys(void);
 };
-
-FragTrap::FragTrap(/* args */)
-{
-}
-
-FragTrap::~FragTrap()
-{
-}
-
 
 #endif

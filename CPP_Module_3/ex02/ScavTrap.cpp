@@ -6,40 +6,74 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 12:50:24 by whendrik          #+#    #+#             */
-/*   Updated: 2023/12/28 14:39:14 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:35:20 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(string name) : ClapTrap(name) 
+ScavTrap::ScavTrap() : ClapTrap() 
 {
-	this->_hitPoint = 100;
-	this->_energyPoint = 50;
-	this->_attackDamage = 20;
-	this->_name = name;
-	cout << GRAY << "ScavTrap " << this->_name << " called" << RESET << endl;
+	_hitPoint = 100;
+	_energyPoint = 50;
+	_attackDamage = 20;
+    _name = "default_name";
+	std::cout << GRAY << "ScavTrap called" << RESET << std::endl;
+}
+
+ScavTrap::ScavTrap(std::string name) : ClapTrap() 
+{
+	_hitPoint = 100;
+	_energyPoint = 50;
+	_attackDamage = 20;
+	_name = name;
+	std::cout << GRAY << "ScavTrap called" << RESET << std::endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
+{
+	std::cout << GRAY << "ScavTrap called" << RESET << std::endl;
+}
+// Copy assignment operator
+ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
+    if (this != &other) {
+        this->_name = other._name;
+        this->_attackDamage = other._attackDamage;
+        this->_energyPoint = other._energyPoint;
+        this->_hitPoint = other._hitPoint;
+    }
+    return (*this);
 }
 
 ScavTrap::~ScavTrap() {
-	cout << GRAY << "ScavTrap " << this->_name << " destroyed"  << RESET << endl;
+	std::cout << GRAY << "ScavTrap " << _name << " destroyed"  << RESET << std::endl;
 }
 
 void	ScavTrap::guardGate()
 {
-	cout << "ScavTrap" << this->_name << " is now in gatekeeper mode" << endl;
+    if (_energyPoint == 0)
+    {
+       std::cout << "ScavTrap " << _name << " has no energy" << std::endl;
+        return ;
+    }
+    else if (_hitPoint <= 0)
+    {
+       std::cout << "ScavTrap " << _name << " is dead, he can't do much" << std::endl;
+        return ;
+    }
+	std::cout << "ScavTrap " << _name << " is now in gatekeeper mode" << std::endl;
 }
 
-void ScavTrap::attack(const string& target)
+void ScavTrap::attack(const std::string& target)
 {
-    if (this->_energyPoint == 0)
+    if (_energyPoint == 0)
         {
-            cout << "Scav Trap " << this->_name << " has no energy buddy" << endl;
+           std::cout << "Scav Trap " << _name << " has no energy buddy" << std::endl;
             return ;
         }
-    this->_energyPoint--;
-    cout << "ScavTrap " << this->_name << " attacks ";
-    cout << target << " causing " << this->_attackDamage;
-    cout << " points of damage!" << endl;
+    _energyPoint--;
+   std::cout << "ScavTrap " << _name << " attacks ";
+   std::cout << target << " causing " << _attackDamage;
+   std::cout << " points of damage!" << std::endl;
 }
