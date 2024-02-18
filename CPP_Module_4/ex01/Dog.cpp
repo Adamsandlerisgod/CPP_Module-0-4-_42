@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:28:53 by whendrik          #+#    #+#             */
-/*   Updated: 2024/02/17 21:44:04 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:58:38 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,34 @@
 Dog::Dog() 
 {
     setType("Dog");
+    this->_brain = new Brain();
 	std::cout << "Dog constructor called" << std::endl;
 }
 // Copy constructor
-Dog::Dog(Dog& other) {
+Dog::Dog(const Dog& other) {
 	std::cout << "Dog Copy constructor called" << std::endl;
     *this = other;
+    this->_brain = other.getBrain()->clone();
+
 }
 // Copy assignment operator
 Dog& Dog::operator=(const Dog& other) {
 	std::cout << "Dog Assignment operator called" << std::endl;
-    if (this != &other) 
-        setType(other.getType());
+    setType(other.getType());
+    this->_brain = other.getBrain()->clone();
     return *this;
 }
 // Destructor
 Dog::~Dog() {
 	std::cout << "Dog Destructor called" << std::endl;
+    delete this->_brain;
 }
 
 void    Dog::makeSound(void) const{
-   std::cout << TEAL << "Generic Dog Noises : \" Woof Bark \" " << RESET << std::endl;
+   std::cout << YELLOW << "Generic Dog Noises : \" Awooooooof \" " << RESET << std::endl;
+}
+
+Brain*	Dog::getBrain(void) const
+{
+    return(this->_brain);
 }

@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 16:34:41 by whendrik          #+#    #+#             */
-/*   Updated: 2023/12/15 20:03:44 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/02/15 21:02:45 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ float	Fixed::toFloat(void) const
 	return (float(this->getRawBits()) / (1 << Fixed::_fractionalBits));
 }
 
-std::ostream & operator<<(std::ostream & OUT, Fixed const & obj)
+std::ostream & operator<<(std::ostream & out, Fixed const & obj)
 {
-	OUT << obj.toFloat();
-	return OUT;
+	out << obj.toFloat();
+	return out;
 }

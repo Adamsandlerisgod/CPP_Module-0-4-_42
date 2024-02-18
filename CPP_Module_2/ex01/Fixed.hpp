@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 16:34:38 by whendrik          #+#    #+#             */
-/*   Updated: 2023/12/15 19:56:39 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/02/14 19:09:45 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ class Fixed {
         int					_fixedPointValue;
 		static const int	_fractionalBits = 8;
 };
-std::ostream&	operator<<(std::ostream& OUT, Fixed const& obj);
+std::ostream&	operator<<(std::ostream& out, Fixed const& obj);
 
 #endif // Fixed_HPP

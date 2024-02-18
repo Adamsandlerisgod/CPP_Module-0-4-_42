@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 17:12:46 by whendrik          #+#    #+#             */
-/*   Updated: 2023/12/02 18:09:09 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:32:34 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Harl
 	public:
 		Harl();
 		~Harl();
-		void complain(string level );
+		void complain(std::string level );
 };
 
 

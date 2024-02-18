@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 16:34:34 by whendrik          #+#    #+#             */
-/*   Updated: 2023/12/15 19:57:51 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/02/15 21:58:17 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main( void ) 
 {
     Fixed a;
-    Fixed const b( 10 );
+    Fixed const b( 10);
     Fixed const c( 42.42f );
     Fixed const d( b );
     

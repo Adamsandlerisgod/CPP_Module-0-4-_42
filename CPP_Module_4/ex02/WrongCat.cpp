@@ -1,47 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongWrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:17:02 by whendrik          #+#    #+#             */
-/*   Updated: 2024/02/17 21:44:20 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:51:24 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongCat.hpp"
 
 // Default constructor
-Animal::Animal() 
+WrongCat::WrongCat() 
 {
-	std::cout << "Generic Animal constructor called" << std::endl;
+    this->_type = "WrongCat";
+	std::cout << "WrongCat constructor called" << std::endl;
 }
 // Copy constructor
-Animal::Animal(Animal& other) {
-	std::cout << "Animal Copy constructor called" << std::endl;
+WrongCat::WrongCat(const WrongCat& other) {
+	std::cout << "WrongCat Copy constructor called" << std::endl;
     *this = other;
 }
 // Copy assignment operator
-Animal& Animal::operator=(const Animal& other) {
+WrongCat& WrongCat::operator=(const WrongCat& other) {
+	std::cout << "WrongCat Assignment operator called" << std::endl;
     if (this != &other) 
         this->_type = other._type;
     return *this;
 }
 // Destructor
-Animal::~Animal() {
-	std::cout << "Animal Destructor called" << std::endl;
+WrongCat::~WrongCat() {
+	std::cout << "WrongCat Destructor called" << std::endl;
 }
 
-std::string  Animal::getType() const {
-    return(this->_type);
-}
-
-void    Animal::makeSound(void) const{
-   std::cout << "Generic Animals don't make noises" << std::endl;
-}
-
-void    Animal::setType(std::string type)
-{
-    _type = type;
+void    WrongCat::makeSound(void) const{
+   std::cout << YELLOW << "Generic WrongCat Noises : \" Oink oink \" " << RESET << std::endl;
 }

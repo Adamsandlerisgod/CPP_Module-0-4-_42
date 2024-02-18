@@ -2,8 +2,10 @@
 # define Animal_HPP
 #include <iostream>
 #include "clean_code.hpp"
+#include "Brain.hpp"
 
-class Animal {
+class Animal
+{
 	protected:
 		std::string	_type;
 	public:
