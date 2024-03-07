@@ -6,14 +6,14 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:17:02 by whendrik          #+#    #+#             */
-/*   Updated: 2024/02/16 16:52:37 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:42:39 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
 // Default constructor
-Cat::Cat() 
+Cat::Cat(): Brain
 {
     this->_type = "Cat";
     this->_brain = new Brain();

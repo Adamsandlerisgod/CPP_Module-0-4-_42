@@ -17,8 +17,9 @@ Brain::Brain(const Brain& other) {
 // Copy assignment operator
 Brain& Brain::operator=(const Brain& other) {
 	std::cout << "Brain Copy Assignment operator called" << std::endl;
+    this->ideas = new std::string[100];
    for (int i = 0; i < 100; i++)
-        this->ideas[i] = other.ideas[i];
+        ideas[i] = other.ideas[i];
     return *this;
 }
 // Destructor

@@ -6,17 +6,16 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:17:02 by whendrik          #+#    #+#             */
-/*   Updated: 2024/02/18 13:54:20 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:50:13 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
 // Default constructor
-Cat::Cat() 
+Cat::Cat(): _brain(new Brain())
 {
     setType("Cat");
-    this->_brain = new Brain();
 	std::cout << "Cat constructor called" << std::endl;
 }
 // Copy constructor
@@ -30,7 +29,13 @@ Cat::Cat(const Cat& other) {
 Cat& Cat::operator=(const Cat& other) {
 	std::cout << "Cat Assignment operator called" << std::endl;
     setType(other.getType());
-    this->_brain = other.getBrain()->clone();
+    if (_brain != nullptr){
+        delete _brain;
+        _brain = nullptr;
+    }
+    if (_brain != nullptr){
+    this->_brain = other._brain->clone();
+    }
     return *this;
 }
 // Destructor
