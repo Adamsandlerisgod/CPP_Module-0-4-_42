@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:28:53 by whendrik          #+#    #+#             */
-/*   Updated: 2024/02/19 14:57:45 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/03/09 10:13:26 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Dog::Dog(): _brain(new Brain())
 	std::cout << "Dog constructor called" << std::endl;
 }
 // Copy constructor
-Dog::Dog(const Dog& other) : _brain(new Brain())
+Dog::Dog(const Dog& other)
 {
 	std::cout << "Dog Copy constructor called" << std::endl;
     *this = other;

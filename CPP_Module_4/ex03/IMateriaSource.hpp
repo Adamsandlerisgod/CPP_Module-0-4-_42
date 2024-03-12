@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Floor.hpp                                          :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 18:16:25 by whendrik          #+#    #+#             */
-/*   Updated: 2024/03/12 21:09:52 by whendrik         ###   ########.fr       */
+/*   Created: 2024/03/09 12:15:40 by whendrik          #+#    #+#             */
+/*   Updated: 2024/03/12 17:54:59 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Floor_HPP
-# define Floor_HPP
-#include <iostream>
-# define SIZE_OF_FLOOR 500
 #include "AMateria.hpp"
 
-class AMateria;
-class Floor 
+class IMateriaSource
 {
-	private:
-		AMateria*	_floor[SIZE_OF_FLOOR];
-		unsigned int	_size;
-		Floor();
-		~Floor();
 	public:
-		static Floor& getInstance();
-		void dropMateria(AMateria* type);
-		
+		virtual ~IMateriaSource() {}
+		virtual void learnMateria(AMateria*) = 0;
+		virtual AMateria* createMateria(std::string const & type) = 0;
 };
-#endif // Floor_HPP

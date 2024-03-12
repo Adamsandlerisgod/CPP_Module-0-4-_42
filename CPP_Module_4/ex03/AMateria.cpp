@@ -1,22 +1,26 @@
 #include "AMateria.hpp"
-// Default constructor
+
 AMateria::AMateria() {
-	std::cout << "Default constructor called" << std::endl;
 }
-// Copy constructor
-AMateria::AMateria(const AMateria& other) {
-	std::cout << "Copy consrtuctor called" << std::endl;
-    // Implementation here
+
+AMateria::AMateria(const std::string& type) : _type(type) {
 }
-// Copy assignment operator
-AMateria& AMateria::operator=(const AMateria& other) {
-	std::cout << "Copy Assignment operator called" << std::endl;
-    if (this != &other) {
-        // Implementation here
-    }
-    return *this;
+
+AMateria::AMateria(AMateria& other) {
+	*this = other;
 }
-// Destructor
+
 AMateria::~AMateria() {
-	std::cout << "Destructor called" << std::endl;
+}
+
+void	AMateria::setType(const std::string& type) {
+    const_cast<std::string&>(_type) = type;
+}
+
+const std::string&	AMateria::getType() const {
+	return _type;
+}
+
+void	AMateria::use(ICharacter& target) {
+	std::cout << "The Materia " << this->_type << " has been used on " << target.getName() << "." << std::endl;
 }

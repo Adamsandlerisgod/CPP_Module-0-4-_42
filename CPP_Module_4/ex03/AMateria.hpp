@@ -1,20 +1,21 @@
 #ifndef AMateria_HPP
 # define AMateria_HPP
+
 #include <iostream>
+#include "ICharacter.hpp"
+
+class ICharacter;
 
 class AMateria {
 	protected:
-
+		std::string _type;
 	public:
-		// Default constructor
+		
 		AMateria();
-		// Copy constructor
-		AMateria(const AMateria& other);
-		// Copy assignment operator
-		AMateria& operator=(const AMateria& other);
-		// Destructor
-		~AMateria();
-		AMateria(std::string const & type);
+		AMateria(AMateria& other);
+		void setType(const std::string& type);
+		virtual	~AMateria();
+		AMateria(const std::string & type);
 		std::string const & getType() const; //Returns the materia type
 		virtual AMateria* clone() const = 0;
 		virtual void use(ICharacter& target);

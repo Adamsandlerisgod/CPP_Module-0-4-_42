@@ -1,8 +1,9 @@
 #ifndef Cure_HPP
 # define Cure_HPP
 #include <iostream>
+#include "AMateria.hpp"
 
-class Cure {
+class Cure : public AMateria{
 	public:
 		// Default constructor
 		Cure();
@@ -12,5 +13,7 @@ class Cure {
 		Cure& operator=(const Cure& other);
 		// Destructor
 		~Cure();
+		AMateria* clone() const;
+		void use(ICharacter& target);
 };
 #endif // Cure_HPP

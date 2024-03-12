@@ -5,31 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 18:17:02 by whendrik          #+#    #+#             */
-/*   Updated: 2024/02/19 14:42:39 by whendrik         ###   ########.fr       */
+/*   Created: 2023/12/29 18:28:53 by whendrik          #+#    #+#             */
+/*   Updated: 2024/03/09 10:40:51 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
 // Default constructor
-Cat::Cat(): Brain
+Cat::Cat(): _brain(new Brain())
 {
-    this->_type = "Cat";
-    this->_brain = new Brain();
+    setType("Cat");
 	std::cout << "Cat constructor called" << std::endl;
 }
 // Copy constructor
-Cat::Cat(const Cat& other) {
+Cat::Cat(const Cat& other)
+{
 	std::cout << "Cat Copy constructor called" << std::endl;
     *this = other;
-    this->_brain = other.getBrain()->clone();
-
 }
+
 // Copy assignment operator
 Cat& Cat::operator=(const Cat& other) {
 	std::cout << "Cat Assignment operator called" << std::endl;
-    this->_type = other._type;
+    setType(other.getType());
     this->_brain = other.getBrain()->clone();
     return *this;
 }

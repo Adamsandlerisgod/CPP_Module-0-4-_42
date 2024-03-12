@@ -6,30 +6,29 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:17:02 by whendrik          #+#    #+#             */
-/*   Updated: 2024/02/18 16:54:44 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/03/09 10:35:41 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
 // Default constructor
-Dog::Dog() 
+Dog::Dog(): _brain(new Brain())
 {
-    this->_type = "Dog";
-    this->_brain = new Brain();
+    setType("Dog");
 	std::cout << "Dog constructor called" << std::endl;
 }
 // Copy constructor
-Dog::Dog(const Dog& other) {
+Dog::Dog(const Dog& other)
+{
 	std::cout << "Dog Copy constructor called" << std::endl;
     *this = other;
-    this->_brain = other.getBrain()->clone();
-
 }
+
 // Copy assignment operator
 Dog& Dog::operator=(const Dog& other) {
 	std::cout << "Dog Assignment operator called" << std::endl;
-    this->_type = other._type;
+    setType(other.getType());
     this->_brain = other.getBrain()->clone();
     return *this;
 }

@@ -42,3 +42,8 @@ void    AAnimal::makeSound(void) const{
    std::cout << "*Generic AAnimal Noises*" << std::endl;
 
 }
+
+void    AAnimal::setType(std::string type)
+{
+    _type = type;
+}

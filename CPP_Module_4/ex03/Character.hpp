@@ -1,16 +1,24 @@
 #ifndef Character_HPP
 # define Character_HPP
 #include <iostream>
+#include "ICharacter.hpp"
 
-class Character {
+#define SLOTS 4
+class Character : public ICharacter
+{
+	private:
+		const std::string	_name;
+		AMateria*			_inventory[SLOTS];
 	public:
-		// Default constructor
 		Character();
-		// Copy constructor
-    Character(const Character& other);
-		// Copy assignment operator
+		Character(const std::string name);
+		Character(Character& other);
 		Character& operator=(const Character& other);
-		// Destructor
 		~Character();
+		
+		const std::string& getName() const;
+        void equip(AMateria* m);
+        void unequip(int idx);
+        void use(int idx, ICharacter& target);
 };
 #endif // Character_HPP

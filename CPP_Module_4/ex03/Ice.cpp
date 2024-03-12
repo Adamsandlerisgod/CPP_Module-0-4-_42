@@ -1,22 +1,30 @@
 #include "Ice.hpp"
 // Default constructor
-Ice::Ice() {
-	std::cout << "Default constructor called" << std::endl;
+Ice::Ice(): AMateria("ice") {
 }
 // Copy constructor
-Ice::Ice(const Ice& other) {
-	std::cout << "Copy consrtuctor called" << std::endl;
-    // Implementation here
+Ice::Ice(const Ice& other) : AMateria("ice"){
+	*this = other;
 }
+
 // Copy assignment operator
 Ice& Ice::operator=(const Ice& other) {
 	std::cout << "Copy Assignment operator called" << std::endl;
     if (this != &other) {
-        // Implementation here
+		setType(other._type);
     }
     return *this;
 }
-// Destructor
+
+// Destructor	
 Ice::~Ice() {
-	std::cout << "Destructor called" << std::endl;
+}
+
+AMateria*	Ice::clone() const {
+	AMateria* ice = new Ice();
+	return ice;
+}
+
+void	Ice::use(ICharacter& target) {
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

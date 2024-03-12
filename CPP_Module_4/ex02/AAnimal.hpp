@@ -6,15 +6,16 @@
 
 class AAnimal : public Brain
 {
-	private:
-		std::string	_type;
 	protected:
+		std::string	_type;
 		AAnimal();
     	AAnimal(const AAnimal& other);
 		AAnimal& operator=(const AAnimal& other);
 		virtual	~AAnimal();
+		virtual void	setType(std::string type);
 	public:
 		std::string	getType(void) const;
 		virtual	void	makeSound(void) const = 0;
+
 };
 #endif // AAnimal_HPP

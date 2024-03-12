@@ -1,22 +1,25 @@
 #include "Floor.hpp"
 // Default constructor
 Floor::Floor() {
-	std::cout << "Default constructor called" << std::endl;
-}
-// Copy constructor
-Floor::Floor(const Floor& other) {
-	std::cout << "Copy consrtuctor called" << std::endl;
-    // Implementation here
-}
-// Copy assignment operator
-Floor& Floor::operator=(const Floor& other) {
-	std::cout << "Copy Assignment operator called" << std::endl;
-    if (this != &other) {
-        // Implementation here
-    }
-    return *this;
 }
 // Destructor
 Floor::~Floor() {
-	std::cout << "Destructor called" << std::endl;
+	for (unsigned int i = 0; i < _size; i++) {
+		delete _floor[i];
+		_floor[i] = NULL;
+	}
+}
+Floor& Floor:: getInstance() {
+	static Floor instance;
+	return instance;
+}
+
+void Floor::dropMateria(AMateria* type) {
+		if (_size == SIZE_OF_FLOOR) {
+		for (unsigned int i = 0; i < _size; i++)
+			delete _floor[i];
+		_size = 0;
+	}
+	_floor[_size] = type;
+	_size++;
 }
