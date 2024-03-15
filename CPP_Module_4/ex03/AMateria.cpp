@@ -1,6 +1,7 @@
 #include "AMateria.hpp"
 
 AMateria::AMateria() {
+	std::cout << "Ameteria constructor called" << std::endl;
 }
 
 AMateria::AMateria(const std::string& type) : _type(type) {

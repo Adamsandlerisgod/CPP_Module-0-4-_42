@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:27:11 by whendrik          #+#    #+#             */
-/*   Updated: 2024/03/12 21:16:03 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:49:47 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 Character::Character() : _name("") {
 	for (int i = 0; i < SLOTS; i++)
 		_inventory[i] = NULL;
+	std::cout << "Character default constructor called" << std::endl;
+
 }
 
 Character::Character(const std::string name) : _name(name) {
 	for (int i = 0; i < SLOTS; i++)
 		_inventory[i] = NULL;
+	std::cout << "Character " << _name << " constructor called" << std::endl;
+
 }
 
 Character::Character(Character& other) : _name(other._name) {

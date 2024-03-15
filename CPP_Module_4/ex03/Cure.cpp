@@ -1,6 +1,8 @@
 #include "Cure.hpp"
 // Default constructor
 Cure::Cure(): AMateria("cure") {
+	std::cout << "Cure default constructor called" << std::endl;
+
 }
 // Copy constructor
 Cure::Cure(const Cure& other) : AMateria("cure"){

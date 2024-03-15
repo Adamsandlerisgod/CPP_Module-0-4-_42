@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 18:56:09 by whendrik          #+#    #+#             */
-/*   Updated: 2024/03/12 18:18:40 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:51:06 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Floor;
 class ICharacter
 {
     public:
-        virtual ~ICharacter() {};
+        virtual ~ICharacter() {std::cout << "ICharacter destructor called" << std::endl;};
         virtual const std::string& getName() const = 0;
         virtual void equip(AMateria* m) = 0;
         virtual void unequip(int idx) = 0;

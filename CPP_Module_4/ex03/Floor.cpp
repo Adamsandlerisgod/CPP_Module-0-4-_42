@@ -1,6 +1,7 @@
 #include "Floor.hpp"
 // Default constructor
 Floor::Floor() {
+	std::cout << "Floor default constructor called" << std::endl;
 }
 // Destructor
 Floor::~Floor() {

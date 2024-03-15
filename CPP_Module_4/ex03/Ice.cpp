@@ -1,6 +1,7 @@
 #include "Ice.hpp"
 // Default constructor
 Ice::Ice(): AMateria("ice") {
+	std::cout << "Ice default constructor called" << std::endl;
 }
 // Copy constructor
 Ice::Ice(const Ice& other) : AMateria("ice"){
