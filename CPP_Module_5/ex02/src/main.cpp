@@ -1,6 +1,8 @@
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
-
+#include "../includes/AForm.hpp"
+#include "../includes/PresidentialPardonForm.hpp"
+#include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/ShrubberyCreationForm.hpp"
 // int main()
 // {
 // 	Bureaucrat* Charlize = new Bureaucrat("Charlize", 140);
@@ -31,8 +33,8 @@
 // 		// a.increaseGrade(5);
 // 		// a.increaseGrade(5);
 // 		// a.increaseGrade(6);
-// 		Form	marriage = Form("Marriage Form", 20, 40);
-// 		Form	divorce = Form(marriage);
+// 		AForm	marriage = AForm("Marriage AForm", 20, 40);
+// 		AForm	divorce = AForm(marriage);
 // 		a.signForm(marriage);
 // 		marriage.beSigned(a);
 // 		a.signForm(marriage);
@@ -48,17 +50,28 @@
 int	main()
 {
 	try {
-		Bureaucrat a = Bureaucrat("A", 1);
-		Bureaucrat b = Bureaucrat("B", 150);
-		Form fa = Form("FormA", 1, 150); //change middle value to 0 to see error
-		Form fb = Form("FormB", 150, 1);
+		Bureaucrat a = Bureaucrat("James McAvoy", 71);
+		Bureaucrat b = Bureaucrat("Lebron James", 150);
+		PresidentialPardonForm fb; //change middle value to 0 to see error
+		RobotomyRequestForm fa("Carmelo");
+		ShrubberyCreationForm fc("Alejandro");
 		std::cout << a << std::endl;
 		std::cout << b << std::endl;
 		std::cout << fa << std::endl;
-		fa.beSigned(a); // change to b to see error
-		std::cout << fa << std::endl;
-		b.signForm(fb);
 		std::cout << fb << std::endl;
+		std::cout << fc << std::endl;
+		fa.beSigned(a); // change to b to see error
+		fb.beSigned(a); // change to b to see error
+		fc.beSigned(a); // change to b to see error
+		std::cout << fa << std::endl;
+		std::cout << fb << std::endl;
+		std::cout << fc << std::endl;
+		fa.execute(a);
+		fb.execute(a);
+		fc.execute(a);
+		// b.signForm(fb);
+		// std::cout << fb << std::endl;
+		// fa.execute(b);
 	} catch (std::exception & e) {
 		std::cout << e.what()  << std::endl;
 	}

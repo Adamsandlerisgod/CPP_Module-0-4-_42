@@ -76,11 +76,17 @@ void	Bureaucrat::setGrade(const int grade){
 	{ std::cout << e.what() << std::endl;}
 }
 
-void	Bureaucrat::signForm(Form &form){
+void	Bureaucrat::signForm(AForm &form){
 	if (form.getSignedstatus() == true)
 		std::cout << this->_name << " signed" << form.getName() << std::endl;
-	else
-		std::cout << this->_name << " couldn't sign " << form.getName() << " because unqualified grades" << std::endl;
+	else { 
+		std::string reason;
+		if (this->getGrade() > form.getGradetoSign())
+			reason = " becuase his grade was too low";
+		else if (this->getGrade() < 1)
+			reason = " becuase his grade was too high/invalid";
+		std::cout << this->_name << " couldn't sign " << form.getName() << reason << std::endl;
+	}
 }
 
 std::ostream &	operator<<( std::ostream & o, Bureaucrat const & rhs )
