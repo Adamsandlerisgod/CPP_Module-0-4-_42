@@ -3,7 +3,7 @@ NAME = Fix
 
 SRC = Fixed.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
-CC = g++
+CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 all = $(NAME)

@@ -10,7 +10,7 @@ SRC = main.cpp \
 	Floor.cpp \
 
 OBJ = $(SRC:.cpp=.o)
-CC = g++
+CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 all = $(NAME)
@@ -24,7 +24,7 @@ SRC = main.cpp \
 	Floor.cpp \
 
 OBJ = $(SRC:.cpp=.o)
-CC = g++
+CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 all = $(NAME)

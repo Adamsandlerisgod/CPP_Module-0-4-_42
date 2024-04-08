@@ -6,7 +6,7 @@
 #    By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/11 00:51:45 by whendrik          #+#    #+#              #
-#    Updated: 2024/04/01 14:51:57 by whendrik         ###   ########.fr        #
+#    Updated: 2024/04/02 21:22:47 by whendrik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ HDRDIR		:= includes
 HDR			:= $(wildcard $(HDRDIR)/*.hpp)
 INC			:= -I./include
 
-CXX			:= g++
+CXX			:= c++
 CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98 -g
 
 SRCS		:= $(wildcard $(SRCDIR)/*.cpp)

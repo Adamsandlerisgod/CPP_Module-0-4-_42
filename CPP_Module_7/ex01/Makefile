@@ -6,12 +6,12 @@
 #    By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/11 00:51:45 by whendrik          #+#    #+#              #
-#    Updated: 2024/04/02 21:23:45 by whendrik         ###   ########.fr        #
+#    Updated: 2024/04/03 16:21:05 by whendrik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
-NAME		:= Bureaucrat
+NAME		:= iter
 
 SRCDIR		:= src
 OBJDIR		:= object

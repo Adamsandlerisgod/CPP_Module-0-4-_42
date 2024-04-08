@@ -3,7 +3,7 @@ NAME = Animal
 
 SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongCat.cpp WrongAnimal.cpp Brain.cpp
 OBJ = $(SRC:.cpp=.o)
-CC = g++
+CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 all = $(NAME)
