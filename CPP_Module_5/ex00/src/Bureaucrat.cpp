@@ -6,19 +6,9 @@ Bureaucrat::Bureaucrat(){
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade): _name(name) {
-	try
-	{
-		if (grade > 150)
-			throw GradeTooLowException();
-		if (grade < 0)
-			throw GradeTooHighException();
-		this->_grade = grade;
-		std::cout << _name << " has been spawned" << std::endl;
-	}
-	catch (GradeTooHighException & e)
-	{ std::cout << e.what() << std::endl;}
-	catch (GradeTooLowException & e)
-	{ std::cout << e.what() << std::endl;}
+	setGrade(grade);
+	std::cout << _name << " has been spawned" << std::endl;
+
 }
 
 // Copy constructor
@@ -52,28 +42,20 @@ int	Bureaucrat::getGrade() const {
 	return (this->_grade);
 }
 
-void Bureaucrat::increaseGrade(const unsigned int change){
-	setGrade(_grade - change);
+void Bureaucrat::increaseGrade(){
+	setGrade(_grade - 1);
 }
 
-void Bureaucrat::decreaseGrade(const unsigned int change){
-	setGrade(_grade + change);
+void Bureaucrat::decreaseGrade(){
+	setGrade(_grade + 1);
 }
 
 void	Bureaucrat::setGrade(const int grade){
-		try
-	{
 		if (grade > 150)
 			throw GradeTooLowException();
 		if (grade < 1)
 			throw GradeTooHighException();
 		this->_grade = grade;
-		std::cout << _name << " has been spawned" << std::endl;
-	}
-	catch (GradeTooHighException & e)	
-	{ std::cout << e.what() << std::endl;}
-	catch (GradeTooLowException & e)
-	{ std::cout << e.what() << std::endl;}
 }
 
 std::ostream &	operator<<( std::ostream & o, Bureaucrat const & rhs )

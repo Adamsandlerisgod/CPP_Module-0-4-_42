@@ -6,8 +6,6 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include <sstream> // For stringstream
-#include <functional>
-
 
 class AForm;
 

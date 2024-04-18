@@ -50,8 +50,8 @@
 int	main()
 {
 	try {
-		Bureaucrat a = Bureaucrat("James McAvoy", 71);
-		Bureaucrat b = Bureaucrat("Lebron James", 150);
+		Bureaucrat a = Bureaucrat("James McAvoy", 1);
+		Bureaucrat b = Bureaucrat("Lebron James", 15);
 		PresidentialPardonForm fb; //change middle value to 0 to see error
 		RobotomyRequestForm fa("Carmelo");
 		ShrubberyCreationForm fc("Alejandro");
@@ -60,15 +60,15 @@ int	main()
 		std::cout << fa << std::endl;
 		std::cout << fb << std::endl;
 		std::cout << fc << std::endl;
-		fa.beSigned(a); // change to b to see error
-		fb.beSigned(a); // change to b to see error
-		fc.beSigned(a); // change to b to see error
+		a.signForm(fa);
+		// a.signForm(fb);
+		a.signForm(fc);
 		std::cout << fa << std::endl;
 		std::cout << fb << std::endl;
 		std::cout << fc << std::endl;
-		fa.execute(a);
-		fb.execute(a);
-		fc.execute(a);
+		a.executeForm(fa);
+		a.executeForm(fb);
+		// fc.execute(a);
 		// b.signForm(fb);
 		// std::cout << fb << std::endl;
 		// fa.execute(b);

@@ -18,49 +18,48 @@
 // 	return 0;
 // }
 
-// int main()
-// {
-// try {
-// 		// Bureaucrat z = Bureaucrat("Z", -1); // overflow
-// 		Bureaucrat a = Bureaucrat("A", 1);
-// 		Bureaucrat b = Bureaucrat("B", 150);
-// 		std::cout << a << std::endl;
-// 		std::cout << b << std::endl;
-// 		std::cout << a << std::endl;
-// 		std::cout << b << std::endl;
-// 		// a.increaseGrade(5);
-// 		// a.increaseGrade(5);
-// 		// a.increaseGrade(6);
-// 		Form	marriage = Form("Marriage Form", 20, 40);
-// 		Form	divorce = Form(marriage);
-// 		a.signForm(marriage);
-// 		marriage.beSigned(a);
-// 		a.signForm(marriage);
-// 		std::cout << marriage.getGradetoExec() << std::endl;
-// 		std::cout << marriage << std::endl;
-
-		
-// 	} catch (std::exception & e) {
-// 		std::cout << e.what()  << std::endl;
-// 	}
-// }
-
-int	main()
+int main()
 {
-	try {
-		Bureaucrat a = Bureaucrat("A", 1);
+try {
+		// Bureaucrat z = Bureaucrat("Z", -1); // overflow
+		Bureaucrat a = Bureaucrat("A", 4);
 		Bureaucrat b = Bureaucrat("B", 150);
-		Form fa = Form("FormA", 1, 150); //change middle value to 0 to see error
-		Form fb = Form("FormB", 150, 1);
 		std::cout << a << std::endl;
 		std::cout << b << std::endl;
-		std::cout << fa << std::endl;
-		fa.beSigned(a); // change to b to see error
-		std::cout << fa << std::endl;
-		b.signForm(fb);
-		std::cout << fb << std::endl;
+		std::cout << a << std::endl;
+		std::cout << b << std::endl;
+		a.increaseGrade();
+		a.increaseGrade();
+		a.increaseGrade();
+		Form	marriage = Form("Marriage Papers", 20, 40);
+		Form	divorce = Form(marriage);
+		b.signForm(marriage);
+		a.signForm(marriage);
+		std::cout << marriage.getGradetoExec() << std::endl;
+		std::cout << marriage << std::endl;
+
+		
 	} catch (std::exception & e) {
 		std::cout << e.what()  << std::endl;
 	}
-	return (0);
 }
+
+// int	main()
+// {
+// 	try {
+// 		Bureaucrat a = Bureaucrat("Obama", 1);
+// 		Bureaucrat b = Bureaucrat("Hamilton", 148);
+// 		Form fa = Form("Declaration of Independence", 1, 145); ///change middle value to 0 to see error
+// 		Form fb = Form("Divorce Papers", 150, 1);
+// 		std::cout << a << std::endl;
+// 		std::cout << b << std::endl;
+// 		std::cout << fa << std::endl;
+// 		a.signForm(fb); 
+// 		std::cout << fa << std::endl;
+// 		b.signForm(fb);
+// 		std::cout << fb << std::endl;
+// 	} catch (std::exception & e) {
+// 		std::cout << e.what()  << std::endl;
+// 	}
+// 	return (0);
+// }

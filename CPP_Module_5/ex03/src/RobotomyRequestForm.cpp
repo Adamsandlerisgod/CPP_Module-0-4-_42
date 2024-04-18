@@ -40,6 +40,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const{
 
 	if (executor.getGrade() <= this->getGradetoExec() && this->getSignedstatus() == true){
 		std::cout << "Drilling Noises: *Wzzzzzzzzzzzzzzz Brah brah brah Skibidi Pop*" << std::endl;
+		std::cout << executor.getName() << " executed " << this->getName() << std::endl;
 		if ((rand()) % 2 == 1)
 			std::cout << this->getTarget() << " has been robotomized successfully" << std::endl;
 		else

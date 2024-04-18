@@ -36,8 +36,10 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 }
 
 void	PresidentialPardonForm::execute(Bureaucrat const & executor) const{
-	if (executor.getGrade() <= this->getGradetoExec() && this->getSignedstatus() == true)
+	if (executor.getGrade() <= this->getGradetoExec() && this->getSignedstatus() == true){
+		std::cout << executor.getName() << " executed " << this->getName() << std::endl;
 		std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+	}
 	if (executor.getGrade() <= this->getGradetoExec() && this->getSignedstatus() == false)
 		std::cout << "Grade requirements are met, but " << this->getName() << " is unsigned." << std::endl;
 	else if (executor.getGrade() > this->getGradetoExec())

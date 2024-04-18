@@ -17,7 +17,7 @@ AForm::AForm(const std::string formName, unsigned int gradeSign, unsigned int gr
 }
 // Copy constructor
 AForm::AForm(const AForm& other) :
- _formName(other.getName()), _signed(other.getSignedstatus()), \
+ _formName(other.getName()), _signed(false), \
  	_gradeToSign(other.getGradetoSign()), _gradeToExec(other.getGradetoExec()) {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = other;
@@ -29,7 +29,7 @@ AForm& AForm::operator=(const AForm& other) {
 		setName(other.getName());
 		setGradetoSign(other.getGradetoSign());
 		setGradetoExec(other.getGradetoExec());
-		setSignedStatus(0);
+		setSignedStatus(false);
     }
     return *this;
 }
@@ -83,10 +83,7 @@ void	AForm::beSigned(const Bureaucrat &bureaucrat){
 	if (bureaucrat.getGrade() > 150)
 		throw GradeTooLowException();
 	if (bureaucrat.getGrade() <= this->_gradeToSign)
-	{	
 		setSignedStatus(true);
-		std::cout << bureaucrat.getName() << " signed " << this->_formName << std::endl;
-	}
 }
 
 std::ostream &	operator<<( std::ostream & o, AForm const & other)

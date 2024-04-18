@@ -5,42 +5,51 @@
 #include "../includes/ShrubberyCreationForm.hpp"
 #include "../includes/Intern.hpp"
 
-int	main( void )
-{
-	std::cout << "======= INTERN =======" << std::endl;
-	{
-		Intern someRandomIntern;
-		AForm* rrf;
-		AForm* rrr;
-		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-		rrr = someRandomIntern.makeForm("shrubbery creation", "Scrub");
-		std::cout << *rrf << std::endl;
-		std::cout << *rrr << std::endl;
-		delete rrr;
-		delete rrf;
-	}
-	std::cout << "======= FORM =======" << std::endl;
-	try {
-		Bureaucrat	a = Bureaucrat("A", 1);
-		Bureaucrat	b = Bureaucrat("Bad", 100);
-		Bureaucrat	c = Bureaucrat("Cat", 150);
-		AForm *pForm = new PresidentialPardonForm("Pres");	// requied grade  25
-		AForm *rForm = new RobotomyRequestForm("Robot");		// requied grade  72
-		AForm *sForm = new ShrubberyCreationForm("Shub");	// requied grade 145
-		pForm->execute(a);
-		rForm->execute(a);
-		sForm->execute(a);
-		// c.executeForm(*sForm); // Fail
-		// c.executeForm(*rForm); // Fail
-		// c.executeForm(*pForm); // Fail
+// int main() {
+//     try {
+//         Bureaucrat president = Bureaucrat("President", 1);
+//         Bureaucrat badGuy = Bureaucrat("Bad", 100);
+//         Bureaucrat catLady = Bureaucrat("Cat", 150);
+        
+//         AForm* presidentialPardonForm = new PresidentialPardonForm("Presidential Pardon");    // required grade 25
+//         AForm* robotomyRequestForm = new RobotomyRequestForm("Robotomy Request");              // required grade 72
+//         AForm* shrubberyCreationForm = new ShrubberyCreationForm("Shrubbery Creation");        // required grade 145
+        
+//         presidentialPardonForm->execute(president);
+//         robotomyRequestForm->execute(president);
+//         shrubberyCreationForm->execute(president);
+        
+//         delete presidentialPardonForm;
+//         delete robotomyRequestForm;
+//         delete shrubberyCreationForm;
+//     } catch (std::exception &e) {
+//         std::cout << e.what() << std::endl;
+//     }
 
-		delete pForm;
-		delete rForm;
-		delete sForm;
-	} catch (std::exception &e) {
-		std::cout << "catch main" << std::endl;
-		std::cout << e.what() << std::endl;
-	}
+//     return 0;
+// }
 
-	return 0;
+int main() {
+        try{
+
+		Intern intern;
+        AForm* robotomyRequestForm;
+		// AForm Form = AForm();
+        AForm* shrubberyCreationForm;
+		Bureaucrat president = Bureaucrat("Obama", 1);
+
+        
+        robotomyRequestForm = intern.makeForm("robotomy request", "Bender");
+        shrubberyCreationForm = intern.makeForm("shrubbery creation", "Scrub");
+        
+        std::cout << *robotomyRequestForm << std::endl;
+        std::cout << *shrubberyCreationForm << std::endl;
+        president.signForm(*robotomyRequestForm);
+
+        delete shrubberyCreationForm;
+        delete robotomyRequestForm;
+		} catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
 }

@@ -16,8 +16,8 @@ class Bureaucrat {
 		~Bureaucrat();
 		std::string	getName() const;
 		int	getGrade() const;
-		void	increaseGrade(const unsigned int change);
-		void	decreaseGrade(const unsigned int change);
+		void	increaseGrade();
+		void	decreaseGrade();
 		void	setGrade(const int grade);
 		
 		class GradeTooHighException : public std::exception{
@@ -30,7 +30,7 @@ class Bureaucrat {
 		class GradeTooLowException : public std::exception{
 			public:
 				virtual const char* what() const throw() {
-						return ("Grade too !");
+						return ("Grade too Low!");
 				}
 		};
 		

@@ -6,19 +6,9 @@ Bureaucrat::Bureaucrat(){
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade): _name(name) {
-	try
-	{
-		if (grade > 150)
-			throw GradeTooLowException();
-		if (grade < 0)
-			throw GradeTooHighException();
-		this->_grade = grade;
-		std::cout << _name << " has been spawned" << std::endl;
-	}
-	catch (GradeTooHighException & e)
-	{ std::cout << e.what() << std::endl;}
-	catch (GradeTooLowException & e)
-	{ std::cout << e.what() << std::endl;}
+	setGrade(grade);
+	std::cout << _name << " has been spawned" << std::endl;
+
 }
 
 // Copy constructor
@@ -52,35 +42,34 @@ unsigned int	Bureaucrat::getGrade() const {
 	return (this->_grade);
 }
 
-void Bureaucrat::increaseGrade(const unsigned int change){
-	setGrade(_grade - change);
+void Bureaucrat::increaseGrade(){
+	setGrade(_grade - 1);
 }
 
-void Bureaucrat::decreaseGrade(const unsigned int change){
-	setGrade(_grade + change);
+void Bureaucrat::decreaseGrade(){
+	setGrade(_grade + 1);
 }
 
 void	Bureaucrat::setGrade(const int grade){
-		try
-	{
-		if (grade > 150)
-			throw GradeTooLowException();
-		if (grade < 1)
-			throw GradeTooHighException();
-		this->_grade = grade;
-		std::cout << _name << " has been spawned" << std::endl;
-	}
-	catch (GradeTooHighException & e)	
-	{ std::cout << e.what() << std::endl;}
-	catch (GradeTooLowException & e)
-	{ std::cout << e.what() << std::endl;}
+	if (grade > 150)
+		throw GradeTooLowException();
+	if (grade < 1)
+		throw GradeTooHighException();
+	this->_grade = grade;
 }
 
 void	Bureaucrat::signForm(Form &form){
+	form.beSigned(*this);
 	if (form.getSignedstatus() == true)
-		std::cout << this->_name << " signed" << form.getName() << std::endl;
-	else
-		std::cout << this->_name << " couldn't sign " << form.getName() << " because unqualified grades" << std::endl;
+		std::cout << this->_name << " signed " << form.getName() << std::endl;
+	else{
+		std::string reason;
+		if (this->getGrade() > form.getGradetoSign())
+			reason = " becuase his grade was too low";
+		else if (this->getGrade() < 1)
+			reason = " becuase his grade was too high/invalid";
+		std::cout << this->_name << " couldn't sign " << form.getName() << reason << std::endl;
+	}
 }
 
 std::ostream &	operator<<( std::ostream & o, Bureaucrat const & rhs )

@@ -52,6 +52,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
                    "      // \\";
 		ofs.close();
 		std::cout << "Shrubbery successfully created in file : " << fileName << std::endl; 
+		std::cout << executor.getName() << " executed " << this->getName() << std::endl;
 		}
 		else
 			std::cout << "Failed to Create File: " << fileName << std::endl;
