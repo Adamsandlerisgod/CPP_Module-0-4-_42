@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 15:30:10 by whendrik          #+#    #+#             */
-/*   Updated: 2024/04/02 20:03:18 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/04/20 15:47:31 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main(){
 	std::srand(std::time(NULL));
 	
 	A *Arm = new A;
+		
 	identify(generate());
 	identify(Arm);
 	identify(NULL);

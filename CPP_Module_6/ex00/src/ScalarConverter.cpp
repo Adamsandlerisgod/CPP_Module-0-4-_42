@@ -27,14 +27,14 @@ void	ScalarConverter::convertToChar(double input){
 	}
 	c = static_cast<char>(input);
 	if (!(std::isprint(c)))
-		return(std::cout << "char: Not displayable" << std::endl, void());
+		return(std::cout << "char: Non displayable" << std::endl, void());
 	std::cout << "char: '" << c << "\'" << std::endl;
 		
 }
 
 void	ScalarConverter::convertToFloat(double input){
 	float f;
-	if (__FLT_MAX__ < input || __FLT_MIN__ > input)
+	if (__FLT_MAX__ < input || -__FLT_MAX__ > input)
 	{
 		std::cout << "float: Impossible" << std::endl;
 		return;
@@ -71,7 +71,7 @@ void	ScalarConverter::convertToInt(double input){
 
 void	ScalarConverter::convertToDouble(double input){
 	double d;
-	if (__DBL_MAX__ < input || __DBL_MIN__ > input)
+	if (__DBL_MAX__ < input || -__DBL_MAX__ > input)
 	{
 		std::cout << "double: Impossible" << std::endl;
 		return;
@@ -96,17 +96,8 @@ void	ScalarConverter::convert(char *input){
 	}
 
 	ScalarConverter sc;
-	if (input[0] == '-') {
-		// Handle negative number
-		sc.convertToChar(c);
-		sc.convertToInt(c);
-		sc.convertToFloat(c);
-		sc.convertToDouble(c);
-	} else {
-		// Handle positive number
-		sc.convertToChar(c);
-		sc.convertToInt(c);
-		sc.convertToFloat(c);
-		sc.convertToDouble(c);
-	}
+	sc.convertToChar(c);
+	sc.convertToInt(c);
+	sc.convertToFloat(c);
+	sc.convertToDouble(c);
 }
