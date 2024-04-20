@@ -6,7 +6,7 @@
 /*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 14:27:42 by whendrik          #+#    #+#             */
-/*   Updated: 2024/04/03 15:28:16 by whendrik         ###   ########.fr       */
+/*   Updated: 2024/04/20 18:51:10 by whendrik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(){
 	int value = 4544;
 	int value2 = 4545;
-
 
 	std::cout << value << std::endl;
 	std::cout << value2 << std::endl;

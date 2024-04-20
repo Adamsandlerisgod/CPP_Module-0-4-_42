@@ -5,6 +5,8 @@
 # include <string>
 # include <exception>
 # include <cctype>
+# include <cstddef> // Include for nullptr
+
 
 
 template <typename T>
@@ -20,22 +22,22 @@ public:
 
 	~Array(void){ delete [] this->_array;}
 
-	Array<T>(const Array &other) : _array(new T[other._size]) ,_size(other._size)
+	Array<T>(const Array &other) : _size(other._size), _array(new T[other._size])
 	{
 		for(unsigned int i = 0; i < _size; i++)
-		{
 			this->_array[i] = other._array[i];
-		}
 	}
 
-	Array<T>	&operator=(T const &other){
+	Array<T>	&operator=(const Array<T>  &other){
 	if (this != &other)
 	{
-		delete [] this->_array;
+		if (this->_array != NULL)
+			delete [] this->_array;
 		this->_size = other._size;
 		this->_array = new T[this->_size];
-		for (unsigned int i = 0; i < this->_size; i++)
+		for (unsigned int i = 0; i < this->_size; i++){
 			this->_array[i] = other._array[i];
+		}
 	}
 	return (*this);
 	}

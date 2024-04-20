@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Iter.hpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/03 15:33:54 by whendrik          #+#    #+#             */
-/*   Updated: 2024/04/03 16:20:56 by whendrik         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef Iter_HPP
 # define Iter_HPP
 
@@ -24,14 +12,15 @@ void	iter(A *address, size_t length, void (*function)(A &)){
 	}
 }
 
-void add_1(int &x){
+template<typename w>
+void add_1(w &x){
 	x += 1;
 }
 
 template<typename f>
 void	printer(f &x){
 	try{
-		std::cout << x + 1 << std::endl;
+		std::cout << x << std::endl;
 	}
 	catch(std::exception &e){
 		std::cout << "Not printable" << std::endl;
