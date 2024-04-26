@@ -6,12 +6,12 @@
 #    By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/11 00:51:45 by whendrik          #+#    #+#              #
-#    Updated: 2024/04/08 17:11:05 by whendrik         ###   ########.fr        #
+#    Updated: 2024/04/22 20:03:40 by whendrik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
-NAME		:= easyfind
+NAME		:= btc
 
 SRCDIR		:= src
 OBJDIR		:= object
