@@ -2,9 +2,9 @@
 
 template<typename T>
 void printList(const std::list<T>& lst) {
-    typename std::list<T>::const_iterator it; // Iterator for list of type T
+    typename std::list<T>::const_iterator it;
     for (it = lst.begin(); it != lst.end(); ++it) {
-        std::cout << *it << " "; // Dereference iterator to access element
+        std::cout << *it << " "; 
     }
     std::cout << std::endl;
 }

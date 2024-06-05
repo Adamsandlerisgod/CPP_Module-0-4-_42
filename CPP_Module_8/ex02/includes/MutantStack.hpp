@@ -14,26 +14,17 @@ class MutantStack : public std::stack<T, Container> {
 	public:
 	MutantStack(void) {};
 	MutantStack(const MutantStack& other) { *this = other; }
-	~MutantStack(void) {};
 
 	MutantStack&	operator=(const MutantStack& other) {
 		this->std::stack<T, Container>::operator=(other);
 		return *this;
 	}
+	~MutantStack(void) {};
 	typedef typename Container::iterator	iterator;
 
-	iterator	begin() { return (this->c.begin()); }
-	iterator	end() { return (this->c.end()); }
+	iterator	start() { return (this->c.begin()); }
+	iterator	finish() { return (this->c.end()); }
 };
-
-
-
-
-
-
-
-
-
 
 
 #endif

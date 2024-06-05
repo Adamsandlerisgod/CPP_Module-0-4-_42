@@ -44,7 +44,7 @@ void	Span::addNumber(const int &number){
 void	Span::addNumber(std::vector<int>::iterator begin, \
  	std::vector<int>::iterator end){
 	int size_of_range = std::distance(begin, end);
-	if (_pos + size_of_range + 1 <= _size){
+	if (_pos + size_of_range <= _size){
 		for(std::vector<int>::iterator start = begin; start < end; start++){
 			_array.push_back(*start);
 		}
