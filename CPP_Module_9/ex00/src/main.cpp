@@ -3,9 +3,8 @@
 int main(int ac, char **argv)
 {
 	if (ac == 2){
-		char *filename = argv[1];
-		(void)filename;
-		BitcoinExchange ex;
+		BitcoinExchange btc = BitcoinExchange();
+		btc.exchange(argv[1]);
 		
 	}
 }

@@ -6,12 +6,12 @@
 #    By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/11 00:51:45 by whendrik          #+#    #+#              #
-#    Updated: 2024/04/03 16:21:05 by whendrik         ###   ########.fr        #
+#    Updated: 2024/06/07 20:21:25 by whendrik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
-NAME		:= iter
+NAME		:= RPN
 
 SRCDIR		:= src
 OBJDIR		:= object

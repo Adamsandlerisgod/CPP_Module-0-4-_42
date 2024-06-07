@@ -12,7 +12,9 @@
 #define ERR "Error: "
 #define ERROR_FILE ERR"unable to open file"
 #define EMPTY_FILE ERR"unable to open file"
-#define INVALID_DATE ERR"bad input "
+#define INVALID_DATE ERR"bad input => "
+#define NEG_NUM ERR"not a positive number."
+#define TOO_LARGE ERR"too large a number."
 
 
 class BitcoinExchange{
@@ -32,7 +34,19 @@ class BitcoinExchange{
 
 	void	exchange(std::string data_base);
 	std::string trim(std::string line);
+	void	calculation(std::string date, float value);
+	std::string	closest_date(std::string date);
+
+
+	bool LeapYearCheck(const int &year);
+
+	bool  checkValidDate(std::string date);
+	bool  checkValidValue(std::string value);
 	void	checkValidFile();
+	int	str_to_int(const std::string &stri);
+	int	str_to_flt(const std::string &stri);
+	std::string date_diff(const std::string &date_1, const std::string &date_2);
+
 
 };
 
