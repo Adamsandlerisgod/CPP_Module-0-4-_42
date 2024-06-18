@@ -8,13 +8,17 @@
 #include <sstream>
 #include <cstdlib>
 #include <cstdio>
+#include <algorithm>
+#include <limits>
 
 #define ERR "Error: "
 #define ERROR_FILE ERR"unable to open file"
 #define EMPTY_FILE ERR"unable to open file"
 #define INVALID_DATE ERR"bad input => "
-#define NEG_NUM ERR"not a positive number."
-#define TOO_LARGE ERR"too large a number."
+#define INVALID_VAL ERR"bad input => "
+#define EMPTY_INPUT ERR"empty input => "
+#define NEG_NUM ERR"not a positive integer."
+#define TOO_LARGE ERR"too large of an integer."
 
 
 class BitcoinExchange{
@@ -44,8 +48,8 @@ class BitcoinExchange{
 	bool  checkValidValue(std::string value);
 	void	checkValidFile();
 	int	str_to_int(const std::string &stri);
-	int	str_to_flt(const std::string &stri);
-	std::string date_diff(const std::string &date_1, const std::string &date_2);
+	float	str_to_flt(const std::string &stri);
+	int date_diff(const std::string &date_1, const std::string &date_2);
 
 
 };

@@ -39,62 +39,23 @@ void	BitcoinExchange::addData(void){
     file.close();
 }
 
-
-// std::string	BitcoinExchange::closest_date(std::string date){
-// 	std::map<std::string, float>::iterator lower = _data.lower_bound(date);
-//     std::map<std::string, float>::iterator upper = _data.upper_bound(date);
-
-// 	std::cout << "Inshallah = " << lower->first << " also" << lower->second << std::endl;
-// 	std::cout << "Mashallah = " << upper->first << " also" << upper->second << std::endl;
-
-// 	if (_data.find(date) != _data.end()){
-// 		std::cout << "Wiggler" << std::endl;
-// 		return (date);
-// 	}
-//     // If lower is the first element or upper is the last element, return the corresponding exchange rate
-// 	if (lower == _data.begin())
-// 	{
-// 		std::cout << "Lower than it should be" << std::endl;
-// 		return lower->first;
-// 	}
-//     if (lower != _data.begin()) {
-// 		std::cout << "lowering lower" << std::endl;
-//         --lower;
-//     } else if (upper == this->_data.end()) {
-// 		std::cout << "too high up" << std::endl;
-//         return (upper--)->first;
-//     }
-
-//     int lowerDistance = abs(str_to_int(date) - str_to_int(lower->first));
-//     int upperDistance = abs(str_to_int(upper->first) - str_to_int(date));
-// 	std::cout << lowerDistance << " versus " << upperDistance << std::endl;
-// 	if (lowerDistance <= upperDistance)
-// 		return lower->first;
-// 	else
-// 		return upper->first;		
-// }
 std::string BitcoinExchange::closest_date(std::string date) {
+	if (_data.find(date) != _data.end())
+		return (date);
     std::map<std::string, float>::iterator lower = _data.lower_bound(date);
     std::map<std::string, float>::iterator upper = _data.upper_bound(date);
 
-    if (lower == _data.begin() && upper == _data.end()) {
-        // No dates in the map
-        std::cerr << "No dates found in the map." << std::endl;
-        return ""; // Return an empty string or handle the case appropriately
-    } else if (lower == _data.begin()) {
-        // No lower bound, return upper bound
+    if (lower == _data.begin()) {
         return upper->first;
-    } else if (upper == _data.end()) {
-        // No upper bound, return lower bound
+    } 
+	else if (upper == _data.end()) {
         --lower;
         return lower->first;
-    } else {
-        // Both lower and upper bounds exist, compare distances
+    } 
+	else {
 		--lower;
-		std::cout << lower->first << " == versus == " << upper->first << std::endl;
-        int lowerDistance = abs(atof(date) - str_to_int(lower->first));
-        int upperDistance = abs(str_to_int(upper->first) - str_to_int(date));
-		std::cout << lowerDistance << " == versus == " << upperDistance << std::endl;
+        int lowerDistance = date_diff(lower->first, date);
+        int upperDistance =  date_diff(upper->first, date);
 
         
         if (lowerDistance <= upperDistance)
@@ -105,11 +66,7 @@ std::string BitcoinExchange::closest_date(std::string date) {
 }
 void	BitcoinExchange::calculation(std::string date, float value){
 	std::string correct_date;
-    std::cout << "Looking up date: " << date << std::endl;
 	correct_date = closest_date(date);
-	std::cout << "AFRICA" << _data[date] << std::endl;
-	std::cout << "correct date = " << correct_date << std::endl;
-	std::cout << _data[correct_date] << " x " << value << " = " << _data[correct_date] * value << std::endl;
 	std::cout << date << " => " << value << " = " << _data[correct_date] * value << std::endl;
 }
 
@@ -118,7 +75,7 @@ void	BitcoinExchange::exchange(std::string data_base){
 	std::ifstream file(data_base.c_str());
 	std::string line;
 
-	std::getline(file, line); // skip first line
+	std::getline(file, line);
     while (std::getline(file, line))
     {
 
@@ -132,8 +89,7 @@ void	BitcoinExchange::exchange(std::string data_base){
         std::string value = trim(line.substr(delim + 1, line.length()));
 		if (checkValidValue(value) == false)
 			continue;
-        // _data[date] = atof(value.c_str());
-		calculation(date, str_to_flt(value));
+		calculation(date, str_to_flt(value.c_str()));
     }
 
     file.close();
@@ -164,7 +120,7 @@ bool  BitcoinExchange::checkValidDate(std::string date){
 		int year = str_to_int(date.substr(0,4));
 		int month = str_to_int(date.substr(5,2));
 		int day = str_to_int(date.substr(8,2));
-		if (year < 0 || year > 9999 || month <= 0 || month > 12 || day <= 0 || day > 31)
+		if (year < 1000 || year > 9999 || month <= 0 || month > 12 || day <= 0 || day > 31)
 			return (false);
 		if (LeapYearCheck(year) == true)
 			daysInMonth[2] = 29;
@@ -175,22 +131,24 @@ bool  BitcoinExchange::checkValidDate(std::string date){
 }
 
 bool  BitcoinExchange::checkValidValue(std::string value){
-	std::cout << "Valid = " << value << std::endl;
-	if (value.length() != 0  && value.at(0) != '-'){
-		float val = str_to_flt(value.c_str());
-		std::cout << val << std::endl;
-		
-		if (val < 0){
-			std::cerr << NEG_NUM << std::endl;
-			return (false);
-		}
-		if (val > 1000){
-			std::cerr << TOO_LARGE << std::endl;
-			return (false);
-		}
-		return (true);
+	if (value.empty() == true){
+		std::cerr << EMPTY_INPUT << value << std::endl;
+		return (false);
 	}
-	return (false);
+	float val = str_to_flt(value.c_str());
+	if (val == -std::numeric_limits<float>::infinity()){
+		std::cerr << INVALID_VAL << value << std::endl;
+		return (false);
+	}
+	if (val < 0){
+		std::cerr << NEG_NUM << std::endl;
+		return (false);
+	}
+	if (val > 1000){
+		std::cerr << TOO_LARGE << std::endl;
+		return (false);
+	}
+	return (true);
 }
 
 void	BitcoinExchange::checkValidFile(){
@@ -210,6 +168,8 @@ int	BitcoinExchange::str_to_int(const std::string &stri){
 	std::stringstream ss(stri);
 	int value;
 	ss >> value;
+	if (ss.fail() ||!ss.eof())
+		return -std::numeric_limits<float>::infinity();
 	return (value);
 	}
 	catch (std::exception &e){
@@ -217,11 +177,13 @@ int	BitcoinExchange::str_to_int(const std::string &stri){
 	}
 }
 
-int	BitcoinExchange::str_to_flt(const std::string &stri){
+float	BitcoinExchange::str_to_flt(const std::string &stri){
 	try{
 	std::stringstream ss(stri);
 	float value;
 	ss >> value;
+	if (ss.fail() ||!ss.eof())
+		return -std::numeric_limits<float>::infinity();
 	return (value);
 	}
 	catch (std::exception &e){
@@ -229,15 +191,23 @@ int	BitcoinExchange::str_to_flt(const std::string &stri){
 	}
 }
 
-std::string BitcoinExchange::date_diff(const std::string &date_1, const std::string &date_2){
+int BitcoinExchange::date_diff(const std::string &date_1, const std::string &date_2){
 	int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	int year_1 = str_to_int(date_1.substr(0,4));
 	int month_1 = str_to_int(date_1.substr(5,2));
-	int day_1 = str_to_int(date_1.substr(8,2));
+	int days_in_year_1 = str_to_int(date_1.substr(8,2));
 	int year_2 = str_to_int(date_2.substr(0,4));
 	int month_2 = str_to_int(date_2.substr(5,2));
-	int day_2 = str_to_int(date_2.substr(8,2));
-	if (year_1 != year_2)
-		while ()
-
+	int days_in_year_2 = str_to_int(date_2.substr(8,2));
+	for (int i = 0; i < month_1; i++){
+		days_in_year_1 += daysInMonth[i];
+	}
+	for (int i = 0; i < month_2; i++){
+		days_in_year_2 += daysInMonth[i];
+	}
+	int res_1 = year_1 * 365 + days_in_year_1;		
+	int res_2 = year_2 * 365 + days_in_year_2;
+	return (abs(res_1 - res_2));
 }
+
+

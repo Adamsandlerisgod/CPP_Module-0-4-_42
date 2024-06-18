@@ -6,17 +6,17 @@
 #    By: whendrik <whendrik@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/11 00:51:45 by whendrik          #+#    #+#              #
-#    Updated: 2024/04/08 16:14:54 by whendrik         ###   ########.fr        #
+#    Updated: 2024/06/12 15:03:32 by whendrik         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
-NAME		:= Array
+NAME		:= PmergeMe
 
 SRCDIR		:= src
 OBJDIR		:= object
 HDRDIR		:= includes
-HDR			:= $(wildcard $(HDRDIR)/*.hpp)
+HDR			:= $(wildcard $(HDRDIR)/*.hpp) $(wildcard $(HDRDIR)/*.tpp)
 INC			:= -I./include
 
 CXX			:= c++
